@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <!-- iOS Notch & Dynamic Island Full Cover Viewport Fix -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    
+    <!-- Safari & Chrome Mobile Top Status Bar Theme Colors -->
+    <meta name="theme-color" content="#031B33">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <title>CrestBridge BPO</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#031B33',        /* Deep Dark Navy Blue from CrestBridge logo */
+                            blue: '#0072CE',        /* Primary Royal Blue from logo text */
+                            accent: '#0082FB',      /* Vibrant Bright Blue for buttons and highlights */
+                            sky: '#38BDF8',         /* Light Sky Blue for subtle badges */
+                            lightBg: '#F8FAFC'      /* Clean Neutral Light Gray background */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+            background-color: #031B33; /* Dark Navy transition for iPhone bounce */
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .top-info-bar {
+            padding-top: max(0.5rem, env(safe-area-inset-top));
+        }
+
+        /* Hero Banner Gradient strictly matched to CrestBridge Logo Colors */
+        .gradient-hero {
+            background: linear-gradient(135deg, #031B33 0%, #004282 55%, #0072CE 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Remove tap highlight on iOS */
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-brand-lightBg text-slate-800 font-sans antialiased selection:bg-brand-blue selection:text-white">
+
+    <div class="top-info-bar bg-brand-navy text-white text-xs py-2 px-4 sm:px-8 border-b border-slate-700/60 relative z-50">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center space-x-6">
+                <a href="tel:+15042339652" class="flex items-center gap-2 hover:text-brand-sky transition-colors">
+                    <i class="fa-solid fa-phone text-brand-sky"></i>
+                    <span>+1 (504) 233-9652</span>
+                </a>
+                <a href="https://wa.me/+15042339652" target="_blank" class="flex items-center gap-2 hover:text-emerald-400 transition-colors">
+                    <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                    <span>WhatsApp: +1 (504) 233-9652</span>
+                </a>
+            </div>
+            <div class="hidden sm:flex items-center space-x-4 text-slate-300">
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-clock text-brand-sky"></i> 24/7 Operations</span>
+                <span>|</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-globe text-brand-sky"></i> Inbound & Outbound BPO Network</span>
+            </div>
+        </div>
+    </div>
+
+    <header class="sticky top-0 z-50 bg-white shadow-md relative">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between bg-white">
+            <!-- Logo Section -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <img src="ChatGPT Image Sep 28, 2026, 09_31_59 PM.png" alt="CrestBridge BPO Logo" class="h-11 w-auto object-contain" onerror="this.onerror=null; this.style.display='none';">
+                <div>
+                    <span class="block font-black text-xl text-brand-navy tracking-tight leading-none">CrestBridge <span class="text-brand-blue">BPO</span></span>
+                    <span class="text-[9px] font-bold tracking-widest text-slate-500 uppercase">Customer Connections</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <div class="hidden lg:flex items-center space-x-8 font-medium text-slate-700">
+                <a href="#home" class="hover:text-brand-blue transition-colors py-2 border-b-2 border-transparent hover:border-brand-blue">Home</a>
+                <a href="#about" class="hover:text-brand-blue transition-colors py-2 border-b-2 border-transparent hover:border-brand-blue">About Us</a>
+                <a href="#services" class="hover:text-brand-blue transition-colors py-2 border-b-2 border-transparent hover:border-brand-blue">Services</a>
+                <a href="#network" class="hover:text-brand-blue transition-colors py-2 border-b-2 border-transparent hover:border-brand-blue">Our Network</a>
+                <a href="#why-us" class="hover:text-brand-blue transition-colors py-2 border-b-2 border-transparent hover:border-brand-blue">Why Choose Us</a>
+                <a href="#contact" class="hover:text-brand-blue transition-colors py-2 border-b-2 border-transparent hover:border-brand-blue">Contact</a>
+            </div>
+
+            <!-- Right Header Actions -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <a href="#contact" class="bg-brand-blue hover:bg-brand-navy text-white font-semibold px-3 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm rounded-xl shadow-md transition-all duration-300 whitespace-nowrap">
+                    Get a Quote
+                </a>
+
+                <button id="mobile-menu-btn" aria-label="Toggle Navigation Menu" class="lg:hidden text-slate-700 p-2 sm:p-2.5 rounded-xl hover:bg-slate-100 focus:outline-none border border-slate-200">
+                    <i class="fa-solid fa-bars text-xl sm:text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-xl relative z-50">
+            <a href="#home" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 font-medium text-slate-800">Home</a>
+            <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 font-medium text-slate-800">About Us</a>
+            <a href="#services" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 font-medium text-slate-800">Services</a>
+            <a href="#network" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 font-medium text-slate-800">Our Network</a>
+            <a href="#why-us" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 font-medium text-slate-800">Why Choose Us</a>
+            <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 font-medium text-slate-800">Contact</a>
+            <div class="pt-2 flex flex-col gap-2">
+                <a href="https://wa.me/+15042339652" target="_blank" class="w-full text-center bg-emerald-600 text-white font-semibold py-2.5 rounded-xl shadow flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="gradient-hero text-white py-20 lg:py-28 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-white/10 px-4 py-1.5 rounded-full text-brand-sky text-sm font-semibold border border-white/20 shadow-inner">
+                        <span class="w-2.5 h-2.5 rounded-full bg-brand-sky animate-pulse"></span>
+                        Premium Call Center & BPO Partner
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        CrestBridge BPO <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-blue-200 to-white">Customer Connections</span>
+                    </h1>
+                    
+                    <p class="text-slate-200 text-lg sm:text-xl max-w-2xl font-light leading-relaxed mx-auto lg:mx-0">
+                        Elevating your global business reach through full-spectrum BPO services. From high-converting telemarketing campaigns to top-tier 24/7 inbound customer support, sales, and back-office operations.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#services" class="w-full sm:w-auto text-center bg-brand-accent hover:bg-blue-600 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5">
+                            Explore Services <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="https://wa.me/+15042339652" target="_blank" class="w-full sm:w-auto text-center bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-8 py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp Us
+                        </a>
+                    </div>
+
+                    <div class="pt-6 border-t border-white/10 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-300 font-medium">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-sky"></i> Inbound & Outbound</span>
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-sky"></i> 150+ Total Agents</span>
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-sky"></i> Multi-Campaign Management</span>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5">
+                    <div class="bg-slate-900/85 border border-white/20 p-8 rounded-3xl shadow-2xl space-y-6 relative">
+                        <div class="flex items-center gap-4">
+                            <div class="p-4 bg-brand-blue/30 rounded-2xl text-brand-sky border border-brand-blue/40">
+                                <i class="fa-solid fa-headset text-4xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl text-white">Call Center Network</h3>
+                                <p class="text-sm text-slate-300">Scalable & Dedicated Operations</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="bg-white/5 p-4 rounded-xl border border-white/10 flex justify-between items-center">
+                                <span class="text-sm font-medium">Inbound Support</span>
+                                <span class="px-2.5 py-1 bg-green-500/20 text-green-300 rounded-md text-xs font-semibold">Active 24/7</span>
+                            </div>
+                            <div class="bg-white/5 p-4 rounded-xl border border-white/10 flex justify-between items-center">
+                                <span class="text-sm font-medium">Outbound Sales & Telemarketing</span>
+                                <span class="px-2.5 py-1 bg-brand-blue/30 text-sky-300 rounded-md text-xs font-semibold">High Conversion</span>
+                            </div>
+                            <div class="bg-white/5 p-4 rounded-xl border border-white/10 flex justify-between items-center">
+                                <span class="text-sm font-medium">Technical & Back-Office</span>
+                                <span class="px-2.5 py-1 bg-blue-500/20 text-blue-300 rounded-md text-xs font-semibold">Dedicated QA</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 text-center text-xs text-slate-300">
+                            Direct Contact: <strong class="text-white">+1 (504) 233-9652</strong>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-white shadow-sm border-b border-slate-200 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-slate-200">
+                <div class="p-4">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-brand-navy mb-1">3+</div>
+                    <div class="text-sm font-semibold text-brand-blue uppercase tracking-wider">Partner Centers</div>
+                    <p class="text-xs text-slate-500 mt-1">Specialized partner facility network</p>
+                </div>
+                <div class="p-4">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-brand-navy mb-1">50+</div>
+                    <div class="text-sm font-semibold text-brand-blue uppercase tracking-wider">Agents per Center</div>
+                    <p class="text-xs text-slate-500 mt-1">Total 150+ trained workforce</p>
+                </div>
+                <div class="p-4">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-brand-navy mb-1">Inbound & Outbound</div>
+                    <div class="text-sm font-semibold text-brand-blue uppercase tracking-wider">Services Offered</div>
+                    <p class="text-xs text-slate-500 mt-1">Complete campaign coverage</p>
+                </div>
+                <div class="p-4">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-brand-navy mb-1">24/7</div>
+                    <div class="text-sm font-semibold text-brand-blue uppercase tracking-wider">Operational Support</div>
+                    <p class="text-xs text-slate-500 mt-1">Seamless global client connectivity</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-brand-lightBg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <div class="relative">
+                    <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" 
+                             alt="Call Center Operations" 
+                             class="w-full h-auto object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-brand-navy text-white p-6 rounded-2xl shadow-xl max-w-xs hidden sm:block border border-brand-blue/30">
+                        <i class="fa-solid fa-quote-left text-brand-blue text-3xl mb-2"></i>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            CrestBridge BPO powers growth by connecting businesses directly to their customers through reliable communication channels.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="inline-block px-3 py-1 bg-brand-blue/10 text-brand-blue font-semibold text-xs rounded-full uppercase tracking-wider">
+                        About CrestBridge BPO
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-brand-navy leading-tight">
+                        Your Trusted Partner in Global BPO & Call Center Operations
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        At <strong>CrestBridge BPO</strong>, we operate our primary in-house call center dedicated to delivering top-tier customer service, sales, and administrative support. To further amplify our capabilities, we lead an expansive network of <strong>3+ specialized partner call centers</strong>.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed">
+                        With over <strong>50+ trained agents in each facility</strong>, our combined network strength exceeds 150+ professional agents. This allows us to run diverse campaigns simultaneously, ranging from cold outreach telemarketing to round-the-clock technical customer care.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-4 pt-4">
+                        <div class="flex items-start gap-3 bg-white p-4 rounded-xl border border-slate-200">
+                            <i class="fa-solid fa-building-user text-brand-blue text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">Main Call Center</h4>
+                                <p class="text-xs text-slate-500">In-house premium service team</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 bg-white p-4 rounded-xl border border-slate-200">
+                            <i class="fa-solid fa-network-wired text-brand-blue text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">3+ Partner Centers</h4>
+                                <p class="text-xs text-slate-500">Handling varied campaigns</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="px-3 py-1 bg-brand-blue/10 text-brand-blue font-semibold text-xs rounded-full uppercase tracking-wider">
+                    Our Core Capabilities
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-brand-navy mt-3">
+                    Comprehensive Inbound & Outbound Solutions
+                </h2>
+                <p class="text-slate-600 mt-4 text-base">
+                    Whether you need sales execution, technical helpdesk, or customer retention, our flexible teams deliver benchmarked quality.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <div class="bg-brand-lightBg p-8 rounded-2xl border border-slate-200 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-brand-navy text-brand-blue rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-md border border-brand-blue/20">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-navy mb-3">Customer Service & Support</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            24/7 inbound assistance across voice, live chat, email, and ticketing systems. Ensuring customer satisfaction and higher retention.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-slate-500 space-y-2 pt-4 border-t border-slate-200">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-blue"></i> Inbound Call Handling</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-blue"></i> Live Chat & Email Tickets</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-blue"></i> Complaint Resolution</li>
+                    </ul>
+                </div>
+
+                <div class="bg-brand-lightBg p-8 rounded-2xl border border-slate-200 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-brand-navy text-brand-blue rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-md border border-brand-blue/20">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-navy mb-3">Telemarketing & Lead Gen</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            High-energy outbound calling campaigns tailored to generate qualified B2B/B2C leads, set appointments, and expand sales pipelines.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-slate-500 space-y-2 pt-4 border-t border-slate-200">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-blue"></i> Cold Calling & Prospecting</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-blue"></i> Qualified Lead Verification</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-blue"></i> Appointment Setting</li>
+                    </ul>
+                </div>
+
+                <div class="bg-brand-lightBg p-8 rounded-2xl border border-slate-200 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-brand-navy text-brand-blue rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-md border border-brand-blue/20">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-navy mb-3">Customer Sales Center</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Dedicated sales teams focused on closing deals, executing upselling strategies, cross-selling, and maximizing revenue per call.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-slate-500 space-y-2 pt-4 border-t border-slate-200">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-blue"></i> Inbound & Outbound Sales</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-blue"></i> Upselling & Cross-selling</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-blue"></i> Payment & Order Processing</li>
+                    </ul>
+                </div>
+
+                <div class="bg-brand-lightBg p-8 rounded-2xl border border-slate-200 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-brand-navy text-brand-blue rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-md border border-brand-blue/20">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-navy mb-3">Technical & Back-Office</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Tier 1 & 2 technical support alongside back-office tasks including Quality Assurance (QA), data entry, and CRM administration.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-slate-500 space-y-2 pt-4 border-t border-slate-200">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-blue"></i> Tech Helpdesk Tier 1/2</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-blue"></i> Quality Assurance Audit</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-blue"></i> Data Management</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="network" class="py-20 bg-brand-navy text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="px-3 py-1 bg-brand-blue/20 text-brand-sky font-semibold text-xs rounded-full uppercase tracking-wider border border-brand-blue/30">
+                        Scalable Infrastructure
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-bold leading-tight">
+                        Our Multi-Center Partner Ecosystem
+                    </h2>
+                    <p class="text-slate-300 leading-relaxed">
+                        To maintain high performance across varied campaign requirements, CrestBridge BPO operates a collaborative model combining our central hub with <strong>3+ partner call centers</strong>.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="p-4 bg-white/5 border border-white/10 rounded-2xl flex gap-4 items-start">
+                            <div class="p-3 bg-brand-blue text-white font-bold rounded-xl text-lg shadow-md">50+</div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Seats Per Partner Center</h4>
+                                <p class="text-xs text-slate-300 mt-1">Each facility is equipped with dedicated infrastructure, high-speed VoIP, and monitoring tools.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-white/5 border border-white/10 rounded-2xl flex gap-4 items-start">
+                            <div class="p-3 bg-brand-blue text-white font-bold rounded-xl text-lg shadow-md"><i class="fa-solid fa-layer-group"></i></div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Specialized Campaign Allocation</h4>
+                                <p class="text-xs text-slate-300 mt-1">We route specific campaigns (e.g., healthcare sales, SaaS support, telecom) to dedicated expert teams.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <div class="bg-white text-slate-800 p-8 rounded-3xl shadow-2xl space-y-6">
+                        <h3 class="text-xl font-bold text-brand-navy border-b pb-4">
+                            Operational Capacity
+                        </h3>
+
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span>In-House Call Center</span>
+                                    <span class="text-brand-blue">Customer Service Hub</span>
+                                </div>
+                                <div class="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-brand-navy h-2.5 rounded-full" style="width: 100%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span>Partner Center 1</span>
+                                    <span class="text-brand-blue">50+ Agents (Telemarketing)</span>
+                                </div>
+                                <div class="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-brand-blue h-2.5 rounded-full" style="width: 100%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span>Partner Center 2</span>
+                                    <span class="text-brand-blue">50+ Agents (Outbound Sales)</span>
+                                </div>
+                                <div class="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-brand-blue h-2.5 rounded-full" style="width: 100%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span>Partner Center 3</span>
+                                    <span class="text-brand-blue">50+ Agents (Technical & Back-Office)</span>
+                                </div>
+                                <div class="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-brand-blue h-2.5 rounded-full" style="width: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-brand-lightBg rounded-xl text-center text-xs text-slate-600 font-medium">
+                            <i class="fa-solid fa-shield-halved text-brand-blue mr-1"></i> Centralized Quality Assurance & KPI Reporting across all partner facilities.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-us" class="py-20 bg-brand-lightBg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="px-3 py-1 bg-brand-blue/10 text-brand-blue font-semibold text-xs rounded-full uppercase tracking-wider">
+                    The CrestBridge Advantage
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-brand-navy mt-3">
+                    Why Businesses Choose CrestBridge BPO
+                </h2>
+                <p class="text-slate-600 mt-4 text-base">
+                    We deliver measurable outcomes, cost efficiency, and customer delight for global organizations.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 card-hover">
+                    <div class="w-12 h-12 bg-brand-blue/10 text-brand-blue rounded-xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-arrow-up-right-dots"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-navy mb-2">Instant Scalability</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Scale your agent seat count up or down seamlessly with our network of 150+ ready-to-deploy agents.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 card-hover">
+                    <div class="w-12 h-12 bg-brand-blue/10 text-brand-blue rounded-xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-navy mb-2">Strict QA Standards</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Regular call audits, sentiment analysis, and continuous agent coaching ensure superior compliance and quality.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 card-hover">
+                    <div class="w-12 h-12 bg-brand-blue/10 text-brand-blue rounded-xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-language"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-navy mb-2">Multilingual Capability</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Engage customers in their preferred languages with clear, articulate, and culturally trained communication experts.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 card-hover">
+                    <div class="w-12 h-12 bg-brand-blue/10 text-brand-blue rounded-xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-dollar-sign"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-navy mb-2">Cost Optimization</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Reduce overhead costs up to 50% compared to maintaining internal customer support and sales teams.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 card-hover">
+                    <div class="w-12 h-12 bg-brand-blue/10 text-brand-blue rounded-xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-shield-virus"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-navy mb-2">Data Security</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Strict data protection protocols, encrypted communications, and adherence to global industry compliance standards.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 card-hover">
+                    <div class="w-12 h-12 bg-brand-blue/10 text-brand-blue rounded-xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-navy mb-2">Transparent Reporting</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Real-time KPI dashboards, daily conversion reports, and complete call metrics for total campaign visibility.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12">
+                
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <span class="px-3 py-1 bg-brand-blue/10 text-brand-blue font-semibold text-xs rounded-full uppercase tracking-wider">
+                            Get In Touch
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-brand-navy mt-3">
+                            Let's Discuss Your Call Center Needs
+                        </h2>
+                        <p class="text-slate-600 text-sm mt-4 leading-relaxed">
+                            Need dedicated agents for customer service, telemarketing, or sales? Contact us today to receive a custom proposal.
+                        </p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-brand-lightBg text-brand-blue rounded-xl flex items-center justify-center text-xl shrink-0 border border-slate-200">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-navy text-sm">Phone Line</h4>
+                                <a href="tel:+15042339652" class="text-slate-600 hover:text-brand-blue text-base font-semibold block">+1 (504) 233-9652</a>
+                                <p class="text-xs text-slate-400">Available 24/7 for business inquiries</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-xl shrink-0 border border-emerald-100">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-navy text-sm">WhatsApp Direct</h4>
+                                <a href="https://wa.me/+15042339652" target="_blank" class="text-emerald-600 hover:underline text-base font-semibold block">+1 (504) 233-9652</a>
+                                <p class="text-xs text-slate-400">Quick response on instant chat</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-brand-lightBg text-brand-blue rounded-xl flex items-center justify-center text-xl shrink-0 border border-slate-200">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-navy text-sm">Email Support</h4>
+                                <p class="text-slate-600 text-sm font-semibold">crestbridgebpo@gmail.com</p>
+                                <p class="text-xs text-slate-400">Response within 2 hours</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white p-6 rounded-2xl shadow-lg space-y-3">
+                        <div class="font-bold text-lg flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i> Prefer WhatsApp Chat?
+                        </div>
+                        <p class="text-xs text-emerald-100 leading-relaxed">
+                            Click below to directly connect with our team on WhatsApp for immediate campaign consultation.
+                        </p>
+                        <a href="https://wa.me/+15042339652" target="_blank" class="inline-block w-full text-center bg-white text-emerald-800 font-bold py-2.5 rounded-xl text-sm shadow hover:bg-emerald-50 transition-colors">
+                            Start Chat Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Google Sheets Integrated Form -->
+                <div class="lg:col-span-7">
+                    <div class="bg-brand-lightBg p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-xl relative">
+                        
+                        <div id="form-success-msg" class="hidden mb-6 p-4 bg-emerald-100 border border-emerald-300 text-emerald-800 rounded-xl text-sm flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-xl text-emerald-600"></i>
+                            <div>
+                                <strong>Message Sent Successfully!</strong>
+                                <p class="text-xs">Your proposal request has been saved directly to our Google Sheet. Our team will contact you shortly.</p>
+                            </div>
+                        </div>
+
+                        <div id="form-error-msg" class="hidden mb-6 p-4 bg-red-100 border border-red-300 text-red-800 rounded-xl text-sm flex items-center gap-3">
+                            <i class="fa-solid fa-triangle-exclamation text-xl text-red-600"></i>
+                            <div>
+                                <strong>Submission Failed!</strong>
+                                <p class="text-xs">Something went wrong while saving your request. Please try again or contact us via WhatsApp.</p>
+                            </div>
+                        </div>
+
+                        <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                            <h3 class="text-2xl font-bold text-brand-navy">Request a Call Center Proposal</h3>
+                            
+                            <div class="grid sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="full-name" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Full Name *</label>
+                                    <input type="text" name="full-name" id="full-name" required placeholder="e.g. John Doe" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-blue bg-white text-slate-800 text-sm">
+                                </div>
+                                <div>
+                                    <label for="email-address" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Email Address *</label>
+                                    <input type="email" name="email-address" id="email-address" required placeholder="john@company.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-blue bg-white text-slate-800 text-sm">
+                                </div>
+                            </div>
+
+                            <div class="grid sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="phone-number" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Phone Number *</label>
+                                    <input type="tel" name="phone-number" id="phone-number" required placeholder="+(1) 234 567 890" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-blue bg-white text-slate-800 text-sm">
+                                </div>
+                                <div>
+                                    <label for="service-type" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Service Needed *</label>
+                                    <select name="service-type" id="service-type" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-blue bg-white text-slate-800 text-sm">
+                                        <option value="" disabled selected>Select Service</option>
+                                        <option value="Customer Support">Customer Service & Support (Inbound)</option>
+                                        <option value="Telemarketing">Telemarketing & Lead Gen (Outbound)</option>
+                                        <option value="Customer Sales">Customer Sales Center</option>
+                                        <option value="Tech Support">Technical Support / Back Office</option>
+                                        <option value="Full BPO Package">Complete Call Center Deployment</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="agent-seats" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Estimated Agents Required</label>
+                                <select name="agent-seats" id="agent-seats" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-blue bg-white text-slate-800 text-sm">
+                                    <option value="1-5 Agents">1 - 5 Agents</option>
+                                    <option value="5-20 Agents">5 - 20 Agents</option>
+                                    <option value="20-50 Agents">20 - 50 Agents</option>
+                                    <option value="50+ Agents">50+ Dedicated Agents</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Campaign Details / Message *</label>
+                                <textarea name="message" id="message" rows="4" required placeholder="Tell us about your campaign, target market, or requirements..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-blue bg-white text-slate-800 text-sm"></textarea>
+                            </div>
+
+                            <button id="submit-btn" type="submit" class="w-full bg-brand-accent hover:bg-blue-600 text-white font-bold py-4 rounded-xl shadow-md transition-colors text-base flex items-center justify-center gap-2">
+                                <i id="btn-icon" class="fa-solid fa-paper-plane"></i> <span id="btn-text">Submit Inquiry</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-navy text-white pt-16 pb-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
+                
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div>
+                            <span class="font-extrabold text-lg block leading-none">CrestBridge <span class="text-brand-blue">BPO</span></span>
+                            <span class="text-[9px] text-brand-sky font-bold tracking-widest uppercase block mt-1">CUSTOMER CONNECTIONS</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Leading provider of in-house and partner call center services. Empowering businesses through inbound support, outbound sales, and telemarketing solutions.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm text-brand-sky mb-4 uppercase tracking-wider">Services</h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><a href="#services" class="hover:text-brand-sky transition-colors">Customer Service Support</a></li>
+                        <li><a href="#services" class="hover:text-brand-sky transition-colors">Telemarketing & Lead Gen</a></li>
+                        <li><a href="#services" class="hover:text-brand-sky transition-colors">Customer Sales Operations</a></li>
+                        <li><a href="#services" class="hover:text-brand-sky transition-colors">Technical Support Tier 1/2</a></li>
+                        <li><a href="#services" class="hover:text-brand-sky transition-colors">Back-Office & QA Audit</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm text-brand-sky mb-4 uppercase tracking-wider">Quick Links</h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><a href="#home" class="hover:text-brand-sky transition-colors">Home Page</a></li>
+                        <li><a href="#about" class="hover:text-brand-sky transition-colors">About Our Center</a></li>
+                        <li><a href="#network" class="hover:text-brand-sky transition-colors">Partner Network (150+ Seats)</a></li>
+                        <li><a href="#why-us" class="hover:text-brand-sky transition-colors">Why Choose Us</a></li>
+                        <li><a href="#contact" class="hover:text-brand-sky transition-colors">Get A Custom Quote</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm text-brand-sky mb-4 uppercase tracking-wider">Direct Contact</h4>
+                    <div class="space-y-3 text-xs text-slate-300">
+                        <p><i class="fa-solid fa-phone text-brand-sky mr-2"></i> +1 (504) 233-9652</p>
+                        <p><i class="fa-brands fa-whatsapp text-green-400 mr-2"></i> +1 (504) 233-9652</p>
+                        <p><i class="fa-solid fa-clock text-brand-sky mr-2"></i> 24 Hours / 7 Days Operational</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 gap-4">
+                <p>&copy; <span id="current-year"></span> CrestBridge BPO - Customer Connections. All rights reserved.</p>
+                <p class="text-slate-500">Inbound & Outbound Call Center Operations</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Google Apps Script Web App Deployment URL
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwXZFhOCjDqq1KojOa4XBAHU0K-114KlpZD3y3BUXzWHQOLPXIfwQWdA85cUiKVlTuB/exec';
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+
+            const successMsg = document.getElementById('form-success-msg');
+            const errorMsg = document.getElementById('form-error-msg');
+            const submitBtn = document.getElementById('submit-btn');
+            const btnIcon = document.getElementById('btn-icon');
+            const btnText = document.getElementById('btn-text');
+            const form = document.getElementById('contact-form');
+
+            // Reset UI states
+            successMsg.classList.add('hidden');
+            errorMsg.classList.add('hidden');
+
+            // Change button to loading state
+            submitBtn.disabled = true;
+            btnIcon.className = "fa-solid fa-spinner fa-spin";
+            btnText.textContent = "Submitting...";
+
+            // Collect Form Data
+            const formData = new FormData(form);
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                submitBtn.disabled = false;
+                btnIcon.className = "fa-solid fa-paper-plane";
+                btnText.textContent = "Submit Inquiry";
+
+                successMsg.classList.remove('hidden');
+                form.reset();
+                successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            })
+            .catch(error => {
+                console.error('Error submitting to Google Sheet:', error);
+                
+                submitBtn.disabled = false;
+                btnIcon.className = "fa-solid fa-paper-plane";
+                btnText.textContent = "Submit Inquiry";
+
+                errorMsg.classList.remove('hidden');
+                errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        }
+    </script>
+</body>
+</html>
